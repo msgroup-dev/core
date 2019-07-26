@@ -123,6 +123,10 @@ final class QueryChecker
                 if (false !== strpos($part, '.')) {
                     [$alias] = explode('.', $part);
 
+                    if(preg_match('@[a-z_.0-9]$@i', $alias, $matches)) {
+                        $alias = $alias[0];
+                    }
+
                     $orderByAliases[] = $alias;
                 }
             }
