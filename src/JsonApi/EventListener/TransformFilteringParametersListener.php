@@ -35,6 +35,9 @@ final class TransformFilteringParametersListener
             return;
         }
 
-        $request->attributes->set('_api_filters', $filters);
+        $request->attributes->set(
+            '_api_filters',
+            array_merge($request->attributes->get('_api_filters', []), $filters)
+        );
     }
 }
